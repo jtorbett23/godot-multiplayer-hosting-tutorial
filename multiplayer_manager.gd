@@ -28,3 +28,6 @@ func on_player_connected(id: int):
 	
 func on_player_disconnected(id:int):
 	print("Player %s leaving..." % id)
+		
+	if player_spawner.has_node(str(id)):
+		player_spawner.get_node(str(id)).queue_free()

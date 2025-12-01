@@ -8,7 +8,6 @@ func _ready() -> void:
 	if args.has("-s"):
 		MultiplayerManager.player_spawner = $Players
 		MultiplayerManager.create_server()
-		$Label.show()
 	# If client
 	else:
 		MultiplayerManager.connect_to_server()

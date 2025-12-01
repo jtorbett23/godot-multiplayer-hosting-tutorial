@@ -11,8 +11,4 @@ spawn_path = NodePath("../Players")
 
 [node name="Players" type="Node2D" parent="."]
 
-[node name="Label" type="Label" parent="."]
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0
-text = "SERVER"
+[node name="Camera2D" type="Camera2D" parent="."]

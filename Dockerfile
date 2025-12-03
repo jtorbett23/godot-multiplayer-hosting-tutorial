@@ -28,18 +28,18 @@ WORKDIR /godotbuildspace
 # Copy our Godot project into the container
 COPY . . 
 ARG EXECUTABLE_NAME
-ENV EXPORT_NAME="Linux"
+ENV EXPORT_NAME="LinuxServer"
 ENV EXECUTABLE_NAME=$EXECUTABLE_NAME
 
 # Export the project in debug or release mode
 ENV EXPORT_MODE="debug" 
-RUN godot --export-${EXPORT_MODE} ${EXPORT_NAME} ${EXECUTABLE_NAME} --headless
+RUN godot --export-${EXPORT_MODE} ${EXPORT_NAME} ${EXECUTABLE_NAME} --headless ./
 
 # Start a new stage to execute the exectuable as we do not need the Godot files anymore
 FROM ubuntu:focal
 
 ARG EXECUTABLE_NAME
 ENV EXECUTABLE_NAME=$EXECUTABLE_NAME
-COPY --from=build /godotbuildspace/${EXECUTABLE_NAME} ./${EXECUTABLE_NAME}
+COPY --from=build /godotbuildspace/ ./
 EXPOSE 6069
 CMD ["sh", "-c", "./${EXECUTABLE_NAME} --headless -s"]

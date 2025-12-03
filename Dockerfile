@@ -41,5 +41,7 @@ FROM ubuntu:focal
 ARG EXECUTABLE_NAME
 ENV EXECUTABLE_NAME=$EXECUTABLE_NAME
 COPY --from=build /godotbuildspace/ ./
-EXPOSE 6069
+
+EXPOSE 6069/tcp
+EXPOSE 6069/udp
 CMD ["sh", "-c", "./${EXECUTABLE_NAME} --headless -s"]

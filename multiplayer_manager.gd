@@ -1,6 +1,5 @@
 extends Node
 
-const SERVER_PORT = 6069
 const SERVER_ADDR = "ws://127.0.0.1:6069"
 
 var player_spawner : Node2D
